@@ -1,0 +1,11 @@
+{
+    "/test":{
+      "target":"https://www.thanking.com.cn:2009/",
+      "secure":false,
+      "logLevel":"debug",
+      "changeOrigin":true,
+      "pathRewrite":{
+        "^/test":""
+      }
+    }
+  }

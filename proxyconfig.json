@@ -1,0 +1,11 @@
+{
+    "/test":{
+      "target":"http://rongdatech.vicp.cc:10237/",
+      "secure":false,
+      "logLevel":"debug",
+      "changeOrigin":true,
+      "pathRewrite":{
+        "^/test":""
+      }
+    }
+  }

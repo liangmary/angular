@@ -1,0 +1,43 @@
+.login-form {
+    max-width: 300px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+.mainDiv{
+    padding-top: 120px;
+    margin-left: 100px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+}
+.mainDiv .main-title{
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    margin-bottom: -5px;
+    font-weight: bold;
+    color: #AAE1FF;
+}
+
+.mainDiv .sub-title{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    color: #AAE1FF;
+}
+.mainDiv .login-div{
+    justify-content: center;
+    display: flex;
+    background-color: #f0f0f0;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    padding: 50px;
+    flex-direction: column;
+}

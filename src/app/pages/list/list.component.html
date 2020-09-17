@@ -1,0 +1,48 @@
+
+<button (click)="addList()" nz-button nzType="primary">
+  <i nz-icon type="plus"></i>新增
+</button>
+<button (click)="doSearch()" nz-button nzType="primary">
+  <i nz-icon type="search"></i>查询
+</button>
+
+<nz-spin [nzSpinning]="isSpinning">
+  <nz-table #basicTable [nzData]="dataSet" *ngIf="dataSet">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>工号</th>
+        <th>职称</th>
+        <th>二维码</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{data.FULL_NAME}}</td>
+        <td>{{data.USER_SEX}}</td>
+        <td>{{data.USER_AGE}}</td>
+        <td>{{data.DR_NUM}}</td>
+        <td>{{data.DR_PROFESSIONAL}}</td>
+        <td>
+          <button nz-button nzType="default" class="row-btn" (click)="showQR(data.SYS_USER_ID)">二维码</button>
+        </td>
+        <td>
+          <a (click)="showModalMiddle(data)">修改</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a *ngIf="data.NUKE==0" (click)="disable(data)">禁用</a>
+          <a *ngIf="data.NUKE==1" (click)="disable(data)">恢复</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>
+<nz-modal [(nzVisible)]="isVisibleMiddle.ifShow" [nzTitle]="isVisibleMiddle.flag" (nzOnCancel)="handleCancelMiddle()"
+  (nzOnOk)="handleOkMiddle()" nzWidth="1000">
+  <app-add-list [(data)]="data" [ifupdate]="isVisibleMiddle.flag"></app-add-list><!-- 新增修改组件 -->
+</nz-modal>
+
+
+<app-qrcode [(data)]="QRdata"></app-qrcode><!-- 二维码展示组件 -->

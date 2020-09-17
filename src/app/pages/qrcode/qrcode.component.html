@@ -1,0 +1,14 @@
+<nz-modal [(nzVisible)]="data.isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+  (nzOnCancel)="QRhandleCancel()" (nzAfterOpen)="onOpen()">
+  <ng-template #modalTitle>
+    二维码
+  </ng-template>
+
+  <ng-template #modalContent>
+      <img src="{{url}}" />
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="QRhandleCancel()">取消</button>
+  </ng-template>
+</nz-modal>

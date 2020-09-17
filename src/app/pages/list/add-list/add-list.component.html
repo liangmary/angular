@@ -1,0 +1,93 @@
+<form nz-form *ngIf="data">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="2" nzFor="name">姓名</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="name" type="text" id="name" [(ngModel)]="data.FULL_NAME">
+    </nz-form-control>
+
+    <nz-form-label [nzSpan]="2" nzFor="sex">性别</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="sex" type="text" id="sex" [(ngModel)]="data.USER_SEX">
+    </nz-form-control>
+
+    <nz-form-label [nzSpan]="2" nzFor="adept">领域</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="adept" type="text" id="adept" [(ngModel)]="data.DR_ADEPT">
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="2" nzFor="professional">职称</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="professional" type="text" id="professional" [(ngModel)]="data.DR_PROFESSIONAL">
+    </nz-form-control>
+
+    <nz-form-label [nzSpan]="2" nzFor="userAge">年龄</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="userAge" type="text" id="userAge" [(ngModel)]="data.USER_AGE">
+    </nz-form-control>
+
+    <nz-form-label [nzSpan]="2" nzFor="drNum">工号</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="drNum" type="text" id="drNum" [(ngModel)]="data.DR_NUM">
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="2" nzFor="DR_SCOPE">职业范围</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="DR_SCOPE" type="text" id="DR_SCOPE" [(ngModel)]="data.DR_SCOPE">
+    </nz-form-control>
+    <nz-form-label [nzSpan]="2" nzFor="dcn">证书编号</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="dcn" type="text" id="dcn" [(ngModel)]="data.DR_CERTIFICATE_NO">
+    </nz-form-control>
+    <nz-form-label [nzSpan]="2" nzFor="dz">职业类别</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="dz" type="text" id="dz" [(ngModel)]="data.DR_ZYLB">
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="2" nzFor="DR_PLACE">执业地点</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="DR_PLACE" type="text" id="DR_PLACE" [(ngModel)]="data.DR_PLACE">
+    </nz-form-control>
+    <nz-form-label [nzSpan]="2" nzFor="DR_REMARK">备注</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="DR_REMARK" type="text" id="DR_REMARK" [(ngModel)]="data.DR_REMARK">
+    </nz-form-control>
+  </nz-form-item>
+  <app-image-cropper [visible]="show" (imgBase64)="yourmethod($event)"></app-image-cropper>
+
+</form>
+<div class="media-content" *ngIf="data" >
+  <div class="col-3">
+    <div class="media-label">
+      视频封面上传:
+      <app-upload [action]="uploadVideoImgUrl" [id]="data.SYS_USER_ID" (finish)="finish(a)"></app-upload>
+    </div>
+    <div class="media-val">
+      <img src="{{'test'+data.DR_VEDIOIMG}}" *ngIf="data.DR_VEDIOIMG" height="100px" />
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="media-label">
+      视频上传:
+      <app-upload *ngIf="data" [action]="uploadVideoUrl" [id]="data.SYS_USER_ID" (finish)="finish(a)"></app-upload>
+    </div>
+    <div class="media-val">
+      <video height="100px" controls="controls" *ngIf="data.DR_VIDEO!=''" :src="{{'test'+data.DR_VIDEO}}">
+      </video>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="media-label">
+      头像上传:
+      <app-upload [action]="uploadImgUrl" [id]="data.SYS_USER_ID" (finish)="finish(a)"></app-upload>
+    </div>
+    <div class="media-val">
+      <img src="{{'test'+data.DR_IMG}}" *ngIf="data.DR_IMG" height="100px" />
+    </div>
+  </div>
+</div>

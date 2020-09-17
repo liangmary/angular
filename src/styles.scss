@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+//@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+.ant-table-tbody>tr>td, .ant-table-thead>tr>th{
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-left:5px;
+    padding-right:5px;
+}
+[nz-button] {
+    margin-right: 8px;
+    margin-bottom: 12px;
+}

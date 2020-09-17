@@ -1,0 +1,26 @@
+<nz-modal [(nzVisible)]="visible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="null"
+  (nzOnCancel)="QRhandleCancel()">
+  <ng-template #modalTitle>
+    裁剪图片
+  </ng-template>
+
+  <ng-template #modalContent>
+    <input type="file" (change)="fileChangeEvent($event)" style="display:none" #inputFile />
+    <div style="height: 300px;text-align: center" *ngIf="croppedImage==''">请选择图片</div>
+
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+      [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+    <div style="text-align: center">
+      <img [src]="croppedImage" /><br />
+
+        <button nz-button nzType="primary" type="file" (click)="getFile(inputFile)">
+          <i nz-icon type="file-image"></i>选择图片
+        </button>&nbsp;&nbsp;&nbsp;
+        <button *ngIf="croppedImage!=''" nz-button nzType="primary" (cilck)="confim()">确认图片<i nz-icon type="right"></i></button>
+    </div>
+
+  </ng-template>
+
+</nz-modal>
